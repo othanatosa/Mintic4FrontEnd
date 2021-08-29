@@ -1,66 +1,135 @@
 <template>
-<section class="vh-100">
-  <div class="container py-5 h-100">
-    <div class="row d-flex align-items-center justify-content-center h-100">
-      <div class="col-md-8 col-lg-7 col-xl-6">
-        <img src="https://mdbootstrap.com/img/Photos/new-templates/bootstrap-login-form/draw2.svg" class="img-fluid" alt="Phone image">
-      </div>
-      <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-        <form>
-          <!-- Email input -->
-          <div class="form-outline mb-4">
-            <input type="email" id="form1Example13" class="form-control form-control-lg" />
-            <label class="form-label" for="form1Example13">Email address</label>
-          </div>
+  <section class="vh-100">
+    <div class="container py-5 h-100">
+      <div class="row d-flex align-items-center justify-content-center h-100">
+        <div class="col-md-8 col-lg-7 col-xl-6">
+          <img
+            src="https://mdbootstrap.com/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+            class="img-fluid"
+            alt="Phone image"
+          />
+        </div>
 
-          <!-- Password input -->
-          <div class="form-outline mb-4">
-            <input type="password" id="form1Example23" class="form-control form-control-lg" />
-            <label class="form-label" for="form1Example23">Password</label>
-          </div>
+        <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#signIn">Sign In</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#signup">Sign Up</a>
+            </li>
+          </ul>
+          <div class="tab-content">
+            <div id="signIn" class="container tab-pane active">
+              <br />
+              <form>
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                  <input
+                    type="email"
+                    id="form1Example13"
+                    class="form-control form-control-lg"
+                  />
+                  <label class="form-label" for="form1Example13"
+                    >Email address</label
+                  >
+                </div>
 
-          <div class="d-flex justify-content-around align-items-center mb-4">
-            <!-- Checkbox -->
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-                id="form1Example3"
-                checked
-              />
-              <label class="form-check-label" for="form1Example3"> Remember me </label>
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                  <input
+                    type="password"
+                    id="form1Example23"
+                    class="form-control form-control-lg"
+                  />
+                  <label class="form-label" for="form1Example23"
+                    >Password</label
+                  >
+                </div>
+
+                <div
+                  class="d-flex justify-content-around align-items-center mb-4"
+                >
+                  <!-- Checkbox -->
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="form1Example3"
+                      checked
+                    />
+                    <label class="form-check-label" for="form1Example3">
+                      Remember me
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary btn-lg btn-block">
+                  Sign in
+                </button>
+              </form>
             </div>
-            
+            <div id="signup" class="container tab-pane active">
+              <br />
+              <form>
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                  <input
+                    type="email"
+                    id="form1Example13"
+                    class="form-control form-control-lg"
+                  />
+                  <label class="form-label" for="form1Example13"
+                    >Email address</label
+                  >
+                </div>
+
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                  <input
+                    type="password"
+                    id="form1Example23"
+                    class="form-control form-control-lg"
+                  />
+                  <label class="form-label" for="form1Example23"
+                    >Password</label
+                  >
+                </div>
+
+                <div
+                  class="d-flex justify-content-around align-items-center mb-4"
+                ></div>
+
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary btn-lg btn-block">
+                  Sign in
+                </button>
+              </form>
+            </div>
           </div>
-
-          <!-- Submit button -->
-          <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
-
-          
-
-        </form>
+        </div>
       </div>
     </div>
-  </div>
-</section>    
-    
+  </section>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
-  data () {
+  name: "HelloWorld",
+  data() {
     return {
-      msg: 'Welcome to Your Vue.js App'
-    }
+      msg: "Welcome to Your Vue.js App"
+    };
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
+h1,
+h2 {
   font-weight: normal;
 }
 ul {
