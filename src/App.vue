@@ -2,7 +2,7 @@
   <div id="app">
     <!-- Header -->
     <nav class="navbar navbar-dark navbar-expand-lg justify-content-between">
-      <a class="navbar-brand" href="#"> <h1>Mintic To Do</h1></a>
+      <a class="navbar-brand" href="#/"> <h1>Mintic To Do</h1></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -13,7 +13,7 @@
               <button type="button" class="btn">Calendar</button>
             </li>
             <li class="nav-item">
-              <button type="button" class="btn">Task</button>
+              <a type="button" href="#/task" class="btn">Task</a>
             </li>
             <li class="nav-item">
               <button type="button" class="btn">Category</button>
