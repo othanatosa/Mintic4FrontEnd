@@ -16,7 +16,7 @@
               <a type="button" href="#/task" class="btn">Task</a>
             </li>
             <li class="nav-item">
-              <button type="button" class="btn">Category</button>
+              <a type="button" href="#/category" class="btn">Category</a>
             </li>
             <li class="nav-item">
               <button type="button" class="btn" >Log out</button>
