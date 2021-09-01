@@ -1,154 +1,335 @@
 <template>
   <section class="vh-100">
     <div class="container h-100">
-      <div class="row d-flex align-items-center justify-content-center h-100">
-        <div >
-          <img src="..\assets\calendario_task.JPG" class="img-calendar" alt="Calendar task" />
-            <div class="absolute d-flex flex-column justify-content-between" style="height: 300px;">
-              <div class="input-group">
-                <input type="date" class="form-control rounded" placeholder="Search" aria-label="Search"
-                  aria-describedby="search-addon" />
-                <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target='#searchModal'>consultar tareas</button>
-              </div>
-              <button type="button" class="btn" data-toggle="modal" data-target="#newModal">Nueva Tarea</button>  
-              <button type="button" class="btn" data-toggle="modal" data-target="#updateModal">Actualizar Tarea</button> 
-              <button type="button" class="btn" data-toggle="modal" data-target="#deleteModal" >Eliminar Tarea</button>     
-            </div>
-         </div>
+      <div class="row d-flex align-items-center justify-content-around h-100">
+        <div
+          class="
+            col-md-4 col-lg-3 col-xl-4
+            flex-column
+            d-flex
+            justify-content-between
+          "
+        >
+          <div class="input-group">
+            <input
+              type="date"
+              id="input-date"
+              class="form-control rounded"
+              placeholder="Search"
+              aria-label="Search"
+              aria-describedby="search-addon"
+            />
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              data-toggle="modal"
+              data-target="#searchModal"
+            >
+              consultar tareas
+            </button>
+          </div>
+          <button
+            type="button"
+            class="btn"
+            data-toggle="modal"
+            data-target="#newModal"
+          >
+            Nueva Tarea
+          </button>
+          <button
+            type="button"
+            class="btn"
+            data-toggle="modal"
+            data-target="#updateModal"
+          >
+            Actualizar Tarea
+          </button>
+          <button
+            type="button"
+            class="btn"
+            data-toggle="modal"
+            data-target="#deleteModal"
+          >
+            Eliminar Tarea
+          </button>
+        </div>
+        <div class="col-md-4 col-lg-6 col-xl-8 ">
+        <img
+          src="..\assets\calendario_task.JPG"
+          class="img-fluid"
+          alt="Calendar task"
+        />
         </div>
       </div>
-            <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel" >Borrar tarea</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+    </div>
+    <div
+      class="modal fade"
+      id="deleteModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Borrar tarea</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <h4>
+                  <label for="recipient-name" class="col-form-label"
+                    >Título:</label
+                  >
+                </h4>
+                <input
+                  type="search"
+                  class="form-control rounded"
+                  placeholder="Buscar"
+                  aria-label="Search"
+                  aria-describedby="search-addon"
+                  id="buscar-tarea"
+                />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Cancelar
+            </button>
+            <button type="button" class="btn btn-primary">
+              Eliminar tarea
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="updateModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Actualizar tarea</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <h4><label class="col-form-label">Título:</label></h4>
+                <div class="input-group">
+                  <input
+                    type="search"
+                    class="form-control rounded"
+                    placeholder="Ingrese el título de la tarea"
+                    aria-label="Search"
+                    aria-describedby="search-addon"
+                  />
+                  <button type="button" class="btn btn-outline-primary">
+                    buscar
                   </button>
                 </div>
-                <div class="modal-body">
-                  <form>
-                    <div class="form-group">
-                      <h4><label for="recipient-name" class="col-form-label">Título:</label></h4>
-                      <input type="search" class="form-control rounded" placeholder="Buscar" aria-label="Search" aria-describedby="search-addon"  id="buscar-tarea">
-                    </div>
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                  <button type="button" class="btn btn-primary">Eliminar tarea</button>
-                </div>
               </div>
-            </div>
+              <div class="form-group">
+                <h4><label class="col-form-label">Categoría:</label></h4>
+                <input
+                  type="text"
+                  class="form-control rounded"
+                  id="task-category"
+                />
+              </div>
+              <div class="form-group">
+                <h4><label class="col-form-label">Descripción:</label></h4>
+                <textarea
+                  rows="4"
+                  class="form-control rounded"
+                  id="task-description"
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <h4><label class="col-form-label">Fecha de entrega:</label></h4>
+                <input
+                  type="date"
+                  class="form-control rounded"
+                  aria-label="Search"
+                  aria-describedby="search-addon"
+                  id="buscar-tarea"
+                />
+              </div>
+            </form>
           </div>
-
-          <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel" >Actualizar tarea</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <form>
-                  <div class="form-group">
-                    <h4><label  class="col-form-label">Título:</label></h4>
-                    <div class="input-group">
-                      <input type="search" class="form-control rounded" placeholder="Ingrese el título de la tarea" aria-label="Search"
-                        aria-describedby="search-addon" />
-                      <button type="button" class="btn btn-outline-primary">buscar</button>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <h4><label  class="col-form-label">Categoría:</label></h4>
-                    <input type="text" class="form-control rounded" id="task-category">
-                  </div>
-                  <div class="form-group">
-                    <h4><label  class="col-form-label">Descripción:</label></h4>
-                    <textarea rows="4" class="form-control rounded" id="task-description"></textarea>
-                  </div>
-                  <div class="form-group">
-                    <h4><label  class="col-form-label">Fecha de entrega:</label></h4>
-                    <input type="date" class="form-control rounded" aria-label="Search" aria-describedby="search-addon"  id="buscar-tarea">
-                  </div>
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary">Actualizar tarea</button>
-              </div>
-            </div>
-          </div>
-          </div>
-
-          <div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel" >Nueva tarea</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <form>
-                  <div class="form-group">
-                    <h4><label  class="col-form-label">Título:</label></h4>
-                    <input type="text" class="form-control rounded" id="task-name">
-                  </div>
-                  <div class="form-group">
-                    <h4><label  class="col-form-label">Categoría:</label></h4>
-                    <input type="text" class="form-control rounded" id="task-category">
-                  </div>
-                  <div class="form-group">
-                    <h4><label  class="col-form-label">Descripción:</label></h4>
-                    <textarea rows="4" class="form-control rounded" id="task-description"></textarea>
-                  </div>
-                  <div class="form-group">
-                    <h4><label  class="col-form-label">Fecha de entrega:</label></h4>
-                    <input type="date" class="form-control rounded" aria-label="Search" aria-describedby="search-addon"  id="buscar-tarea">
-                  </div>
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary">Añadir tarea</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Tarea</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form>
-                <div class="form-group">
-                  <h4><label for="recipient-name" class="col-form-label">Título:</label></h4>
-                </div>
-                <div class="form-group">
-                  <h4><label for="recipient-name" class="col-form-label">Descripción:</label></h4>
-                </div>
-                <div class="form-group">
-                  <h4><label for="recipient-name" class="col-form-label">Categoría:</label></h4>
-                </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Cancelar
+            </button>
+            <button type="button" class="btn btn-primary">
+              Actualizar tarea
+            </button>
           </div>
         </div>
       </div>
+    </div>
 
+    <div
+      class="modal fade"
+      id="newModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Nueva tarea</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <h4><label class="col-form-label">Título:</label></h4>
+                <input
+                  type="text"
+                  class="form-control rounded"
+                  id="task-name"
+                />
+              </div>
+              <div class="form-group">
+                <h4><label class="col-form-label">Categoría:</label></h4>
+                <input
+                  type="text"
+                  class="form-control rounded"
+                  id="task-category"
+                />
+              </div>
+              <div class="form-group">
+                <h4><label class="col-form-label">Descripción:</label></h4>
+                <textarea
+                  rows="4"
+                  class="form-control rounded"
+                  id="task-description"
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <h4><label class="col-form-label">Fecha de entrega:</label></h4>
+                <input
+                  type="date"
+                  class="form-control rounded"
+                  aria-label="Search"
+                  aria-describedby="search-addon"
+                  id="buscar-tarea"
+                />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Cancelar
+            </button>
+            <button type="button" class="btn btn-primary">Añadir tarea</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="searchModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Tarea</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <h4>
+                  <label for="recipient-name" class="col-form-label"
+                    >Título:</label
+                  >
+                </h4>
+              </div>
+              <div class="form-group">
+                <h4>
+                  <label for="recipient-name" class="col-form-label"
+                    >Descripción:</label
+                  >
+                </h4>
+              </div>
+              <div class="form-group">
+                <h4>
+                  <label for="recipient-name" class="col-form-label"
+                    >Categoría:</label
+                  >
+                </h4>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </template>
@@ -158,9 +339,9 @@ export default {
   name: "HelloWorld",
   data() {
     return {
-      msg: "Welcome to Your Vue.js App"
+      msg: "Welcome to Your Vue.js App",
     };
-  }
+  },
 };
 </script>
 
@@ -185,38 +366,29 @@ li {
   display: inline-block;
   margin: 0 10px;
 }
-.container{
+.container {
   padding-bottom: 1vh;
 }
-.nav-item .nav-link{
+.nav-item .nav-link {
   color: #42b983;
 }
-.nav-item .nav-link.active{
+.nav-item .nav-link.active {
   background-color: #edfaff;
   border-bottom-color: #edfaff;
 }
-.btn{
+.btn {
   background-color: #5264ef;
   color: #fff;
-}
-.img-calendar {
-	width: 876px;
-	height: 525px;
-  margin-left: 350px;
-}
-
-div.absolute {
-  position: absolute;
-  top: 20%;
-  right: 75%;
-  width: 350px;
-  height: 600px;
+  margin-top: 20px !important;
 }
 
 .modal-header {
+  background-color: #5264ef;
+  color: white;
+}
 
-    background-color: #5264ef;
-    color: white;
- }
+#input-date{
+  margin-top: 20px !important;
+}
 
 </style>
