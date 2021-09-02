@@ -3,7 +3,11 @@
     <div class="container h-100">
       <div class="row d-flex align-items-center justify-content-center h-100">
         <div class="col-md-8 col-lg-7 col-xl-6">
-          <img src="..\assets\Mobile note list-amico.svg" class="img-fluid" alt="Phone image"/>
+          <img
+            src="..\assets\Mobile note list-amico.svg"
+            class="img-fluid"
+            alt="Phone image"
+          />
         </div>
         <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
           <ul class="nav nav-tabs">
@@ -19,13 +23,14 @@
               <br />
               <h2>Welcome</h2>
               <br />
-              <form>
+              <form v-on:submit.prevent="processAuthUser">
                 <!-- Email input -->
                 <div class="form-outline mb-4">
                   <input
                     type="email"
                     id="form1Example13"
                     class="form-control form-control-lg"
+                    v-model="user_in.username"
                   />
                   <label class="form-label" for="form1Example13"
                     >Email address</label
@@ -38,6 +43,7 @@
                     type="password"
                     id="form1Example23"
                     class="form-control form-control-lg"
+                    v-model="user_in.password"
                   />
                   <label class="form-label" for="form1Example23"
                     >Password</label
@@ -71,7 +77,7 @@
             <div id="signup" class="container tab-pane">
               <br />
               <h2>Creat your account</h2>
-              <br/>
+              <br />
               <form>
                 <!-- Email input -->
                 <div class="form-outline mb-4">
@@ -115,12 +121,49 @@
 </template>
 
 <script>
+import gql from "graphql-tag";
+import jwt_decode from "jwt-decode";
+
 export default {
-  name: "HelloWorld",
-  data() {
+  name: "UserAuth",
+
+  data: function() {
     return {
-      msg: "Welcome to Your Vue.js App"
+      user_in: {
+        username: "",
+        password: ""
+      }
     };
+  },
+
+  methods: {
+    processAuthUser: async function() {
+      await this.$apollo
+        .mutate({
+          mutation: gql`
+            mutation($authenticateCredentials: CredentialsInput!) {
+              authenticate(credentials: $authenticateCredentials) {
+                refresh
+                access
+              }
+            }
+          `,
+          variables: {
+            authenticateCredentials: this.user_in
+          }
+        })
+        .then(result => {
+          let data = result.data.authenticate;
+          data.user_id = jwt_decode(data.access)
+            .user_id.toString()
+            .padStart(3, "0");
+
+          this.$emit("log-in", data, this.user_in.username);
+        })
+        .catch(error => {
+          alert("El usuario y/o contraseña son incorrectos");
+        });
+    }
   }
 };
 </script>
@@ -140,17 +183,17 @@ li {
   display: inline-block;
   margin: 0 10px;
 }
-.container{
+.container {
   padding-bottom: 1vh;
 }
-.nav-item .nav-link{
+.nav-item .nav-link {
   color: #42b983;
 }
-.nav-item .nav-link.active{
+.nav-item .nav-link.active {
   background-color: #edfaff;
   border-bottom-color: #edfaff;
 }
-.btn{
+.btn {
   background-color: #5264ef;
   color: #fff;
 }
