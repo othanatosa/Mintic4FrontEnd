@@ -1,42 +1,36 @@
 <template>
   <div id="app">
     <!-- Header -->
-    <nav class="navbar navbar-expand-lg justify-content-between">
+    <nav class="navbar navbar-dark navbar-expand-lg justify-content-between" v-if="is_auth">
       <a class="navbar-brand" href="#"> <h1>Mintic To Do</h1></a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#"
-              v-on:click="init" v-if="is_auth">Usuarios <span class="sr-only">(current)</span></a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" v-on:click="task" v-if="is_auth">Tareas</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" v-on:click="category" v-if="is_auth">Categorías</a>
-          </li>
-        </ul>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <div class="btn-group" role="group" aria-label="Toggle navigation">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <button type="button" class="btn" v-on:click="task">Task</button>
+            </li>
+            <li class="nav-item">
+              <button type="button" class="btn" v-on:click="category">Category</button>
+            </li>
+            <li class="nav-item">
+              <button type="button" class="btn" v-on:click="logOut">Log out</button>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
     <!-- Header -->
-
+    <div class=container-fluid>
+      <router-view v-on:log-in="logIn"></router-view>
+    </div>
 
     <!-- Footer -->
-    
-    <router-view />
+    <nav class="navbar navbar-expand-lg justify-content-center" v-if="is_auth">
+      <a class="navbar-brand" href="#">DW1_CP4_G4</a>
+    </nav>
   </div>
 </template>
 
@@ -59,7 +53,7 @@ export default {
   methods: {
     updateAccessToken: async function () {
       if (localStorage.getItem("refresh_token") == null) {
-        this.$router.push({ name: "user_auth" });
+        this.$router.push({ name: "signIn" });
         this.is_auth = false;
         return;
       }
@@ -83,7 +77,7 @@ export default {
         })
         .catch((error) => {
           alert("Su sesión expiró, vuelva a iniciar sesión.");
-          this.$router.push({ name: "user_auth" });
+          this.$router.push({ name: "signIn" });
           this.is_auth = false;
           localStorage.clear();
         });
@@ -101,26 +95,19 @@ export default {
 
     init: function () {
       this.$router.push({
-        name: "user",
+        name: "task",
         params: { username: localStorage.getItem("current_username") },
       });
     },
 
-    account: function () {
-      this.$router.push({
-        name: "SignIn",
-        params: { username: localStorage.getItem("current_username") },
-      });
-    },
-
-    transacction: function () {
+    task: function () {
       this.$router.push({
         name: "task",
         params: { username: localStorage.getItem("current_username") },
       });
     },
 
-    historial: function () {
+    category: function () {
       this.$router.push({
         name: "category",
         params: { username: localStorage.getItem("current_username") },
@@ -138,14 +125,29 @@ export default {
 };
 </script>
 
-
 <style>
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+}
+.navbar{
+  background-color: #5264ef;
+}
+.navbar .navbar-brand{
+  color: #fff;
+}
+.navbar-nav .nav-item .btn{
+  background: #3e4b83;
+  color: #ffffff;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  text-align: center;
+  margin: 0px 10px;
+  width: 100px;
+}
+.container-fluid{
+  min-height: auto;
 }
 </style>

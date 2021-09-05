@@ -4,7 +4,7 @@
     <div class="container h-100">
         <div class="row d-flex align-items-center justify-content-center h-100">
             <div >
-                <img src="../assets/CategoryPicture.jpg" class="img-calendar" alt="Calendar task" />
+                <img src="../assets/category.png" class="img-calendar" alt="Calendar task" />
                 <div class="absolute d-flex flex-column justify-content-between" style="height: 200px;">
                     <button type="button" class="btn" data-toggle="modal" data-target="#newModal">Nueva Categoria</button>  
                     <button type="button" class="btn" data-toggle="modal" data-target="#deleteModal" >Eliminar Categoria</button>     

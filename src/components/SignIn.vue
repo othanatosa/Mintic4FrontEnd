@@ -1,13 +1,9 @@
 <template>
-  <section class="vh-100">
-    <div class="container h-100">
+  <section class="vh-100 py-5">
+    <div id="SingIn" class="container h-100 auth_user">
       <div class="row d-flex align-items-center justify-content-center h-100">
         <div class="col-md-8 col-lg-7 col-xl-6">
-          <img
-            src="..\assets\Mobile note list-amico.svg"
-            class="img-fluid"
-            alt="Phone image"
-          />
+          <img src="../assets/mobile-list.png" class="img-fluid" alt="Phone image"/>
         </div>
         <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
           <ul class="nav nav-tabs">
@@ -27,7 +23,7 @@
                 <!-- Email input -->
                 <div class="form-outline mb-4">
                   <input
-                    type="email"
+                    type="text"
                     id="form1Example13"
                     class="form-control form-control-lg"
                     v-model="user_in.username"
@@ -125,7 +121,7 @@ import gql from "graphql-tag";
 import jwt_decode from "jwt-decode";
 
 export default {
-  name: "UserAuth",
+  name: "SingIn",
 
   data: function() {
     return {
@@ -158,10 +154,9 @@ export default {
             .user_id.toString()
             .padStart(3, "0");
 
-          this.$emit("log-in", data, this.user_in.username);
-        })
-        .catch(error => {
-          alert("El usuario y/o contraseña son incorrectos");
+          this.$emit("log-in", data, this.user_in.username)
+        }).catch((error) => {
+          alert("El usuario y/o contraseña son incorrectos")
         });
     }
   }
@@ -183,17 +178,17 @@ li {
   display: inline-block;
   margin: 0 10px;
 }
-.container {
+.container{
   padding-bottom: 1vh;
 }
-.nav-item .nav-link {
+.nav-item .nav-link{
   color: #42b983;
 }
-.nav-item .nav-link.active {
+.nav-item .nav-link.active{
   background-color: #edfaff;
   border-bottom-color: #edfaff;
 }
-.btn {
+.btn{
   background-color: #5264ef;
   color: #fff;
 }
